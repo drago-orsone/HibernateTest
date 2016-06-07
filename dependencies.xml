@@ -1,0 +1,14 @@
+<ivy-module version="2.0">
+    <info organisation="it.csttech" module="dbloader"/>
+    <dependencies>
+
+        <!-- Logging -->
+        <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.5" transitive="false" />
+        <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.5" transitive="false" />
+
+		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency org="org.hibernate" name="hibernate-entitymanager" rev="5.1.0.Final"/>
+
+
+    </dependencies>
+</ivy-module>

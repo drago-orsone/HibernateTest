@@ -2,5 +2,6 @@
 <classpath>
 	<classpathentry kind="src" output="bin" path="src"/>
 	<classpathentry kind="var" path="JRE_LIB" rootpath="JRE_SRCROOT" sourcepath="JRE_SRC"/>
+	<classpathentry kind="con" path="org.apache.ivyde.eclipse.cpcontainer.IVYDE_CONTAINER/?project=HibernateTest&amp;ivyXmlPath=dependencies.xml&amp;confs=*"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
