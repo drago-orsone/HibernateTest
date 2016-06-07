@@ -15,16 +15,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.apache.ivyde.eclipse.ivynature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>bin</name>
-			<type>2</type>
-			<location>/home/alberto-dragoni/Scaricati/bin</location>
-		</link>
-		<link>
-			<name>src</name>
-			<type>2</type>
-			<location>/home/alberto-dragoni/Scaricati/src</location>
-		</link>
-	</linkedResources>
 </projectDescription>
