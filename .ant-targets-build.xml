@@ -1,0 +1,12 @@
+clean
+compile
+doc
+help
+init
+ivy-cleancache
+ivy-release
+ivy-report
+ivy-retrieve
+ivy-retrieve-jar
+ivy-retrieve-runtime
+jar
