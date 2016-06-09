@@ -3,7 +3,7 @@
 		Testing Hibernate power (effective-octo-carnival).
 	</description>
 
-	<property name="main-class"  value="it.csttech.hibernatetest.drago_orsone.Test"/>
+	<property name="main-class"  value="it.csttech.hibernatetest.ManageEmployee"/>
 
 	<property name="src.dir"      value="${basedir}/src"/>
 	<property name="build.dir"    value="${basedir}/bin"/>
@@ -31,7 +31,6 @@
 		<path refid="classpath" />
 		<globmapper from="${basedir}${file.separator}*" to="..${file.separator}*" />
 	</pathconvert>
-	<echo message="Checking available libraries: ${mf.classpath}" />
 
 	<target name="clean" description="Tidy up the workspace">
 		<delete failonerror="false" dir="${build.dir}"/>

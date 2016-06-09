@@ -8,6 +8,9 @@
 
 		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
 		<dependency org="org.hibernate" name="hibernate-entitymanager" rev="5.1.0.Final"/>
+		
+		<!-- http://mvnrepository.com/artifact/postgresql/postgresql -->
+		<dependency org="postgresql" name="postgresql" rev="9.1-901-1.jdbc4" transitive="false" />
 
 
     </dependencies>
