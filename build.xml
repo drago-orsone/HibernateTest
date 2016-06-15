@@ -106,7 +106,7 @@
 		<ivy:cleancache />
 	</target>
 
-	<target name="jar" depends="compile" description="Does all what is needed to distrubute the result.">
+	<target name="jar" description="Does all what is needed to distrubute the result.">
 		<mkdir dir="${dist.dir}"/>
 		<mkdir dir="${distlib.dir}"/>
 		<mkdir dir="${distcfg.dir}"/>

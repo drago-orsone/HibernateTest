@@ -15,3 +15,6 @@ hs_err_pid*
 lib/*
 /bin/
 dist/
+
+# ignore cfg
+cfg/hibernate.cfg.xml
