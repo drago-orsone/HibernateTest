@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivy-module version="2.0">
+    <info organisation="it.csttech" module="dbloader" revision="working@CST-120703-01-l" status="integration" publication="20160609120315"/>
+    <dependencies>
+
+        <!-- Logging -->
+        <dependency org="org.apache.logging.log4j" name="log4j-api" rev="2.5" transitive="false"/>
+        <dependency org="org.apache.logging.log4j" name="log4j-core" rev="2.5" transitive="false"/>
+
+		<!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+		<dependency org="org.hibernate" name="hibernate-entitymanager" rev="5.1.0.Final"/>
+		
+		<!-- http://mvnrepository.com/artifact/postgresql/postgresql -->
+		<dependency org="postgresql" name="postgresql" rev="9.1-901-1.jdbc4" transitive="false"/>
+
+
+    </dependencies>
+</ivy-module>
