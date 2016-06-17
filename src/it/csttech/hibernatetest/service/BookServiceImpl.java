@@ -2,6 +2,7 @@ package it.csttech.hibernatetest.service;
 
 import java.util.List;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -13,22 +14,25 @@ import it.csttech.hibernatetest.entities.Book;
 public class BookServiceImpl implements BookService<Book, Integer> {
 
 	private BookDao<Book, Integer> bookDao;
-	
+
 	private SessionFactory sessionFactory;
 
 	public BookServiceImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 		bookDao = new BookDaoImpl();
 	}
-	
-	//@Transactional (Spring)
+
+	// @Transactional (Spring)
 	public void persist(Book entity) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		bookDao.persist(entity, session);
-		tx.commit();
-		session.flush();
-		session.close();
+		sessionManager(entity, (Book book, Session session) ->  bookDao.persist(book, session));
+	}
+	
+	public void delete(Book entity) {
+		sessionManager(entity, (Book book, Session session) ->  bookDao.delete(book, session));
+	}
+	
+	public void update(Book entity) {
+		sessionManager(entity, (Book book, Session session) ->  bookDao.update(book, session));
 	}
 
 	public Book findById(Integer id) {
@@ -40,25 +44,8 @@ public class BookServiceImpl implements BookService<Book, Integer> {
 		session.close();
 		return book;
 	}
-	
-	public void delete(Book entity) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		bookDao.delete(entity, session);
-		tx.commit();
-		session.flush();
-		session.close();
-	}
-	
-	public void update(Book entity) {
-		Session session = this.sessionFactory.openSession();
-		Transaction tx = session.beginTransaction();
-		bookDao.update(entity, session);
-		tx.commit();
-		session.flush();
-		session.close();
-	}
-	
+
+
 	public List<Book> findAll() {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -68,7 +55,7 @@ public class BookServiceImpl implements BookService<Book, Integer> {
 		session.close();
 		return books;
 	}
-	
+
 	public void deleteAll() {
 		Session session = this.sessionFactory.openSession();
 		Transaction tx = session.beginTransaction();
@@ -79,4 +66,27 @@ public class BookServiceImpl implements BookService<Book, Integer> {
 		session.flush();
 		session.close();
 	}
-}	
+
+	interface ActionPerformed {
+		public void doAction(Book entity, Session session);
+	}
+
+	private void sessionManager(Book entity, ActionPerformed actionPerformed) {
+		Session session = this.sessionFactory.openSession();
+		Transaction tx = null;
+		try {
+			tx = session.beginTransaction();
+			actionPerformed.doAction(entity, session);
+			tx.commit();
+		} catch (HibernateException e) {
+			if (tx != null)
+				tx.rollback();
+			e.printStackTrace();
+		} finally {
+			session.flush();
+			session.close();
+		}
+	}
+
+
+}
