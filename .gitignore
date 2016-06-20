@@ -18,3 +18,7 @@ dist/
 
 # ignore cfg
 cfg/hibernate.cfg.xml
+cfg/log4j2.xml
+
+# ignore log
+log/

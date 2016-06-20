@@ -31,7 +31,8 @@ public class ManageBooks {
 		
 		SessionFactory sessionFactory = null;
 		try {
-			sessionFactory = new Configuration().configure(new java.io.File("cfg/hibernate.cfg.xml")).buildSessionFactory();
+			sessionFactory = new Configuration().configure(new java.io.File("cfg/hibernate.cfg.xml"))
+					.setInterceptor(new LoggingInterceptor()).buildSessionFactory();
 		} catch (Throwable ex) {
 			System.err.println("Failed to create sessionFactory object." + ex);
 			throw new ExceptionInInitializerError(ex);
